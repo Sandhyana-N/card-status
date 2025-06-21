@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    active: local
+
+server:
+  port: 8443
+
+logging:
+  level:
+    root: DEBUG
+---
+spring:
+  profiles: local
+kafka:
+  brokerList: localhost:9092
+  consumerConfig:
+    group-id: my-group-id
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    auto-offset-reset: earliest
+    enable-auto-commit: true
+
+topics:
+  mainTopic:
+    routeId: MainTopic
+    name: card-status-main-topic-local
+    groupId: cardstatus-group
+    consumerCount: 1
+
+schema.registry:
+  schemaRegistryUrl: 'http://localhost:8081'
+  auto.register.schemas: true
+
+api:
+  endpoint: http://localhost:8444//api/cards/update/status
