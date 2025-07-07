@@ -49,7 +49,7 @@ public abstract class AbstractRoute extends RouteBuilder {
 
         Endpoint apiEdnpoint = null;
         CamelContext camelContext = getCamelContext();
-        HttpComponent httpComponent = camelContext.getComponent("HTTP", HttpComponent.class);
+        HttpComponent httpComponent = camelContext.getComponent("http", HttpComponent.class);
 
         try{
             apiEdnpoint = httpComponent.createEndpoint(getApiConfig().getUrl());

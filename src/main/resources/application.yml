@@ -35,3 +35,8 @@ schema.registry:
 
 api:
   endpoint: http://localhost:8444//api/cards/update/status
+
+camel:
+  component:
+    kafka:
+      brokers: localhost:9092

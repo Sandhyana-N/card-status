@@ -75,6 +75,11 @@
             <artifactId>camel-http</artifactId>
             <version>${camel.version}</version> <!-- use the same version as your Camel core version -->
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-kafka-starter</artifactId>
+            <version>3.11.5</version>
+        </dependency>
 
     </dependencies>
 
