@@ -14,6 +14,16 @@ public final class LogUtil {
         sb.append("errorMessage=\"").append(errorMessage).append("\",");
 
         logger.error(sb.toString());
+    }
+
+    public static void info(Logger logger, String method, String traceId, String logMessage){
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("method=\"").append(method).append("\",");
+        sb.append("traceId=\"").append(traceId).append("\",");
+        sb.append("logMessage=\"").append(logMessage).append("\",");
+
+        logger.info(sb.toString());
 
     }
 

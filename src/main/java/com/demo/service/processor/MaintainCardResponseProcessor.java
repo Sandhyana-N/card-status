@@ -25,7 +25,7 @@ public class MaintainCardResponseProcessor implements Processor {
             exchange.getIn().setBody(response);
             exchange.getIn().setHeaders(headers);
         } else {
-           throw new BusinessException("",resultCode);
+           throw new BusinessException("",resultCode,true);
         }
 
 

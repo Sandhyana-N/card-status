@@ -16,4 +16,19 @@ public class TopicsConfig {
     public String mainTopic;
     @Value("${topics.mainTopic.routeId}")
     public String topicRouteId;
+    @Value("topics.retryTopic1.name")
+    public String retryTopic1;
+    @Value("${topics.retryTopic1.routeId}")
+    public String retryTopic1RouteId;
+    @Value("${topics.retryTopic1.delayInterval}")
+    public int retryTopic1DelayInterval;
+    @Value("${topics.mainTopic.groupId}")
+    public String mainTopicGroupId;
+    @Value("${topics.retryTopic1.groupId}")
+    public String retryTopic1GroupId;
+    @Value("${topics.mainTopic.consumerCount}")
+    public int mainTopicConsumerCount;
+    @Value("${topics.retryTopic1.consumerCount}")
+    public int retryTopic1ConsumerCount;
+
 }

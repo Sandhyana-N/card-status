@@ -28,6 +28,13 @@ topics:
     name: card-status-main-topic-local
     groupId: cardstatus-group
     consumerCount: 1
+  retryTopic1:
+    routeId: RetryRoute1
+    name: card-status-main-topic-local1
+    groupId: cardstatus-group
+    consumerCount: 1
+    delayInterval: 1200
+
 
 schema.registry:
   schemaRegistryUrl: 'http://localhost:8081'
@@ -35,3 +42,8 @@ schema.registry:
 
 api:
   endpoint: http://localhost:8444//api/cards/update/status
+
+camel:
+  component:
+    kafka:
+      brokers: localhost:9092

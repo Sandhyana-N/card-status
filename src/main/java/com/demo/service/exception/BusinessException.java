@@ -11,6 +11,7 @@ public class BusinessException extends Exception{
 
     private String errorMessage;
     private String errorCode;
+    private boolean retryable;
 
     public BusinessException(String message){
         super(message);

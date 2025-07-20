@@ -27,21 +27,36 @@ public class KafkaConfig {
     @Value("${kafka.consumerConfig.enable-auto-commit}")
     private boolean enableAutoCommit;
 
-    private StringBuilder consumerString;
+    @Value("${kafka.consumerConfig.key-serializer}")
+    private String keySerializer;
+    @Value("${kafka.consumerConfig.value-serializer}")
+    private String valueSerializer;
+
+    private String consumerString;
+
+    private String producerString;
 
     @PostConstruct
-    public void  init() {
-        consumerString = new StringBuilder("Broker List        : ").append(brokerList).
-        append("Group ID           : ").append(groupId).append("\n").
-        append("Key Deserializer   : ").append(keyDeserializer).append("\n").
-        append("Value Deserializer : ").append(valueDeserializer).append("\n").
-        append("Auto Offset Reset  : ").append(autoOffsetReset).append("\n").
-        append("Enable Auto Commit : ").append(enableAutoCommit).append("\n");
+    public void init() {
+        consumerString = "brokers=" + brokerList +
+                "&groupId=" + groupId +
+                "&keyDeserializer=" + keyDeserializer +
+                "&valueDeserializer=" + valueDeserializer +
+                "&autoOffsetReset=" + autoOffsetReset +
+                "&autoCommitEnable=" + enableAutoCommit;
+
+        producerString = "brokers=" + brokerList +
+                "&keySerializer=" + keySerializer +
+                "&valueSerializer=" + valueSerializer;
 
     }
 
     public String getConsumerConfig() {
         return consumerString.toString();
+    }
+
+    public String getProducerConfig() {
+        return producerString.toString();
     }
 
 }

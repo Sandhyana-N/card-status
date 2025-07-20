@@ -12,7 +12,7 @@ public class Application {
 
     }
 
-        public void dummy() {
+    public void dummy() {
 
-        }
+    }
 }
