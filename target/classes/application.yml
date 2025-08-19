@@ -7,7 +7,8 @@ server:
 
 logging:
   level:
-    root: DEBUG
+    root: INFO
+
 ---
 spring:
   profiles: local
@@ -35,15 +36,11 @@ topics:
     consumerCount: 1
     delayInterval: 1200
 
-
-schema.registry:
-  schemaRegistryUrl: 'http://localhost:8081'
-  auto.register.schemas: true
-
 api:
-  endpoint: http://localhost:8444//api/cards/update/status
+  endpoint: http://localhost:8444/api/cards/update/status
 
 camel:
   component:
     kafka:
+      enabled: false
       brokers: localhost:9092

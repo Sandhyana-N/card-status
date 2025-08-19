@@ -19,8 +19,8 @@ public class BusinessExceptionProcessor implements Processor {
         final BusinessException businessException = (BusinessException) exchange.getProperty(Exchange.EXCEPTION_CAUGHT, Exception.class);
 
         String errorCode = businessException.getErrorCode();
+        exchange.setProperty(Constants.FURTHER_RETRYABLE, true);
         boolean isFurtherRetryable = exchange.getProperty(Constants.FURTHER_RETRYABLE, boolean.class);
-        String nextRetryTime = null;
 
         if ("400".equalsIgnoreCase(errorCode)) {
             exchange.setProperty(Constants.FURTHER_RETRYABLE, false);
@@ -28,10 +28,6 @@ public class BusinessExceptionProcessor implements Processor {
 
         if (!isFurtherRetryable) {
             LogUtil.error(log, method, businessException.getErrorCode(), businessException.getErrorMessage());
-        } else {
-            Long delayTime = exchange.getIn().getHeader(Constants.NEXT_DELAY_TIME, Long.class);
-            nextRetryTime = String.valueOf(System.currentTimeMillis() + delayTime);
-            exchange.setProperty(Constants.NEXT_DELAY_TIME, nextRetryTime);
         }
     }
 }

@@ -1,8 +1,7 @@
 package com.demo.service.processor;
 
-import com.demo.service.model.Card;
+
 import com.demo.service.util.LogUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
@@ -18,11 +17,9 @@ public class CardStatusTransformationProcessor  implements Processor {
         LogUtil.info(log,"process", exchange.getProperty(Constants.TRACE_ID, String.class),
                 "Entering: " + method + " method in CardStatusTransformationProcessor");
 
-        String body = exchange.getIn().getBody(String.class);
-        ObjectMapper objectMapper = new ObjectMapper();
-        Card card = objectMapper.readValue(body,Card.class);
+        String body = exchange.getMessage().getBody(String.class);
 
-        exchange.getIn().setBody(card);
+        exchange.getIn().setBody(body);
 
         LogUtil.info(log,"process", exchange.getProperty(Constants.TRACE_ID, String.class),
                 "Exiting: " + method + " method in CardStatusTransformationProcessor");

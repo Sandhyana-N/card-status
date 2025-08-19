@@ -27,11 +27,11 @@ public class RequestValidationProcessor implements Processor {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(request);
 
-        String traceId = jsonNode.get("traceId").asText();
+        String cardNumber = jsonNode.get("cardNumber").asText();
 
-        if(StringUtils.isBlank(traceId)){
-            LogUtil.error(log,method,"5001","Missing traceId");
-            throw new BusinessException("Missing traceId", "5001", false);
+        if(StringUtils.isBlank(cardNumber)){
+            LogUtil.error(log,method,"5001","Missing cardNumber");
+            throw new BusinessException("Missing cardNumber", "5001", false);
         }
 
 
